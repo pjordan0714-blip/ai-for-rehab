@@ -3,9 +3,10 @@
 import PageHeader from "@/components/PageHeader";
 import Newsletter from "@/components/Newsletter";
 import { prompts } from "@/data/prompts";
+import type { Prompt } from "@/data/prompts";
 import { useState } from "react";
 
-function PromptCard({ prompt }: { prompt: typeof prompts[0] }) {
+function PromptCard({ prompt }: { prompt: Prompt }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -28,7 +29,8 @@ function PromptCard({ prompt }: { prompt: typeof prompts[0] }) {
         {prompt.title}
       </h3>
       <p className="text-sm text-slate-600 mb-4">{prompt.description}</p>
-      <div className="relative">
+
+      <div className="relative mb-4">
         <pre className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-sm text-slate-700 whitespace-pre-wrap font-mono">
           {prompt.prompt}
         </pre>
@@ -39,6 +41,28 @@ function PromptCard({ prompt }: { prompt: typeof prompts[0] }) {
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
+
+      {(prompt.suggestedInputs || prompt.outputFormat || prompt.safetyNote) && (
+        <div className="space-y-2 border-t border-slate-100 pt-3">
+          {prompt.suggestedInputs && (
+            <p className="text-xs text-slate-500">
+              <span className="font-semibold text-slate-600">Suggested inputs:</span>{" "}
+              {prompt.suggestedInputs}
+            </p>
+          )}
+          {prompt.outputFormat && (
+            <p className="text-xs text-slate-500">
+              <span className="font-semibold text-slate-600">Output format:</span>{" "}
+              {prompt.outputFormat}
+            </p>
+          )}
+          {prompt.safetyNote && (
+            <p className="text-xs text-amber-700 bg-amber-50 rounded px-2 py-1">
+              {prompt.safetyNote}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -48,13 +72,13 @@ export default function PromptsPage() {
     <>
       <PageHeader
         title="Prompt Library"
-        description="Copy-and-paste prompts built for rehab workflows. Each one has been tested in real clinic and leadership settings."
+        description="Copy-and-paste prompts built for real rehab workflows — clinic operations, leadership, documentation, referral development, and more."
       />
 
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
           {/* PHI Warning */}
-          <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-10">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-8">
             <h3 className="text-lg font-bold text-red-800 mb-2">
               Do Not Enter Patient Information
             </h3>
@@ -69,6 +93,26 @@ export default function PromptsPage() {
               When a prompt says &quot;paste your text here,&quot; use
               de-identified or example content. If you need to work with real
               patient data, use only tools your compliance team has approved.
+            </p>
+          </div>
+
+          {/* Intro */}
+          <div className="mb-10">
+            <p className="text-slate-600 mb-3">
+              These prompts are designed for de-identified, practical rehab
+              workflows. They were built by a rehab operations leader and tested
+              in real clinic and leadership settings — not pulled from generic
+              AI prompt lists.
+            </p>
+            <p className="text-slate-600 mb-3">
+              Each prompt is copy-and-paste ready. Replace the bracketed
+              placeholders with your own details. The more specific context you
+              provide, the better the output will be.
+            </p>
+            <p className="text-slate-600">
+              <strong>Always review AI output before using it.</strong> These
+              tools draft — you decide. That applies to clinical content,
+              staff communication, policy documents, and everything in between.
             </p>
           </div>
 
