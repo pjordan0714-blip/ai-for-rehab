@@ -18,8 +18,8 @@ export default async function CaseStudyPage({
 
   const sections = [
     { label: "The Problem", content: study.problem },
-    { label: "The Workflow", content: study.workflow },
-    { label: "Results", content: study.results },
+    { label: "The Approach", content: study.workflow },
+    { label: "Expected Outcomes", content: study.results },
     { label: "Lessons Learned", content: study.lessons },
   ];
 
@@ -31,7 +31,7 @@ export default async function CaseStudyPage({
             href="/case-studies"
             className="text-sm text-teal-700 hover:text-teal-800 mb-4 inline-block"
           >
-            &larr; Back to Case Studies
+            &larr; Back to Implementation Examples
           </Link>
           <h1 className="text-4xl font-bold text-slate-800 mb-4">
             {study.title}
@@ -52,6 +52,14 @@ export default async function CaseStudyPage({
 
       <section className="bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-12">
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+            <p className="text-sm text-amber-800">
+              This is an illustrative implementation example, not a published
+              case study. It reflects common patterns and realistic outcomes
+              based on operational experience in rehab settings.
+            </p>
+          </div>
+
           {sections.map((s) => (
             <div key={s.label}>
               <h2 className="text-2xl font-bold text-slate-800 mb-4">

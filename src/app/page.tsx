@@ -16,19 +16,19 @@ const features = [
   {
     title: "Resource Library",
     description:
-      "Guides, templates, and workflows organized by topic — from documentation to marketing.",
+      "Implementation guides, policy templates, and workflow breakdowns — organized by what you actually need to get done.",
     href: "/resources",
   },
   {
     title: "AI Use Cases by Role",
     description:
-      "Practical ways clinicians, directors, and executives are using AI in rehab settings.",
+      "Specific ways clinicians, clinic directors, regional leaders, and executives are putting AI to work in rehab settings right now.",
     href: "/use-cases",
   },
   {
     title: "Prompt Library",
     description:
-      "Ready-to-use prompts tested in real rehab workflows. Copy, customize, and go.",
+      "Copy-and-paste prompts built for rehab workflows. Each one has been tested in real clinic and leadership settings.",
     href: "/prompts",
   },
 ];
@@ -44,7 +44,8 @@ export default function Home() {
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10">
             Tools, workflows, and real-world lessons for physical therapy, rehab
-            operations, and clinic leadership.
+            operations, and clinic leadership — built by someone who actually
+            works in this industry.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -70,8 +71,9 @@ export default function Home() {
             Who This Is For
           </h2>
           <p className="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
-            Built for rehab professionals who want to use AI practically and
-            responsibly — not chase hype.
+            If you work in outpatient rehab and you&apos;ve been wondering where
+            AI actually fits — without the hype, the jargon, or the risk — this
+            site was built for you.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {audiences.map((a) => (
@@ -93,9 +95,10 @@ export default function Home() {
             What You&apos;ll Find Here
           </h2>
           <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">
-            This is not a collection of AI prompts. It&apos;s a practical
-            resource hub with implementation guides, leadership workflows, case
-            studies, and tools tested in real clinics.
+            This is not a list of AI prompts with a healthcare label slapped on
+            it. It&apos;s a resource hub with implementation guides, leadership
+            workflows, tool comparisons, and honest lessons from testing AI in
+            real clinic operations.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((f) => (
@@ -121,9 +124,10 @@ export default function Home() {
             AI Use Cases by Role
           </h2>
           <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-            Whether you&apos;re a treating clinician, a clinic director, or a
-            regional leader, there are practical ways AI can help you work more
-            efficiently — without replacing your judgment.
+            A clinic director and a treating PT use AI differently. So do
+            regional leaders, owners, and front office staff. Browse use cases
+            filtered by your actual role — not generic lists that apply to
+            nobody in particular.
           </p>
           <Link
             href="/use-cases"
@@ -142,14 +146,15 @@ export default function Home() {
               A Note on Safety and Compliance
             </h2>
             <p className="text-slate-700 mb-4">
-              AI is a powerful tool, but it comes with real responsibilities in
-              healthcare settings. Never enter protected health information into
-              AI tools unless your organization has approved the tool and has
-              appropriate agreements in place.
+              AI does not get a pass on HIPAA. Do not enter protected health
+              information into any AI tool unless your organization has vetted
+              the tool, signed a BAA, and established clear usage policies. That
+              includes ChatGPT, Claude, Gemini, and any AI scribe platform.
             </p>
             <p className="text-slate-700 mb-6">
-              All AI output should be reviewed by a qualified professional
-              before use in clinical, billing, or compliance contexts.
+              Every AI output — whether it&apos;s a clinical note, a patient
+              handout, or a staff email — must be reviewed by a qualified human
+              before it goes anywhere. AI drafts. You decide.
             </p>
             <Link
               href="/safety"
@@ -166,22 +171,39 @@ export default function Home() {
 
       {/* About Founder */}
       <section className="bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <h2 className="text-3xl font-bold text-slate-800 mb-6 text-center">
             Built by a Rehab Professional
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto mb-6">
-            AI for Rehab was created by Peter Jordan, PT, DPT — a physical
-            therapist and healthcare operations leader who is actively testing
-            AI tools in real rehab settings. This isn&apos;t theory. It&apos;s
-            field-tested.
-          </p>
-          <Link
-            href="/about"
-            className="text-teal-700 font-semibold hover:text-teal-800"
-          >
-            Learn more about the project &rarr;
-          </Link>
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-8">
+            <p className="text-slate-700 leading-relaxed mb-4">
+              AI for Rehab was created by{" "}
+              <span className="font-semibold">Peter Jordan, PT, DPT</span> — a
+              physical therapist and healthcare operations leader with hands-on
+              experience in multi-site outpatient rehab.
+            </p>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              Peter has worked across clinic operations, leadership development,
+              documentation workflows, de novo clinic launches, and new service
+              line implementation. He has led teams, managed P&amp;Ls, built
+              onboarding programs, and spent more hours than he&apos;d like to
+              admit in EMR systems.
+            </p>
+            <p className="text-slate-700 leading-relaxed mb-6">
+              He started testing AI tools to solve the problems he kept running
+              into: clinicians charting after hours, directors drowning in admin
+              work, inconsistent communication across sites, and leadership
+              teams that needed better data without hiring analysts. This site
+              is where he shares what&apos;s working, what isn&apos;t, and what
+              rehab leaders should actually pay attention to.
+            </p>
+            <Link
+              href="/about"
+              className="text-teal-700 font-semibold hover:text-teal-800"
+            >
+              More about the project &rarr;
+            </Link>
+          </div>
         </div>
       </section>
     </>

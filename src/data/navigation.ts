@@ -8,7 +8,7 @@ export const navigation: NavItem[] = [
   { label: "Resources", href: "/resources" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Prompt Library", href: "/prompts" },
-  { label: "Case Studies", href: "/case-studies" },
+  { label: "Examples", href: "/case-studies" },
   { label: "AI Tools", href: "/tools" },
   { label: "About", href: "/about" },
   { label: "Safety", href: "/safety" },

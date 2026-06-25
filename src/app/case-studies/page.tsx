@@ -4,21 +4,31 @@ import Newsletter from "@/components/Newsletter";
 import { caseStudies } from "@/data/caseStudies";
 
 export const metadata = {
-  title: "Case Studies — AI for Rehab",
+  title: "Implementation Examples — AI for Rehab",
   description:
-    "Real-world examples of AI adoption in rehab organizations.",
+    "Illustrative examples of AI adoption in rehab organizations — what works, what doesn't, and what to watch for.",
 };
 
 export default function CaseStudiesPage() {
   return (
     <>
       <PageHeader
-        title="Case Studies"
-        description="Real-world examples of AI adoption in rehab organizations. What worked, what didn't, and what we learned."
+        title="Implementation Examples"
+        description="These are illustrative scenarios based on common patterns in rehab operations — not published case studies with verified data. They are designed to help you think through what AI adoption actually looks like in practice."
       />
 
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-10">
+            <p className="text-sm text-slate-600">
+              <span className="font-semibold">Note:</span> These examples are
+              illustrative, not published research. They reflect common
+              scenarios and realistic outcomes based on operational experience
+              in rehab settings. Specific numbers are representative estimates,
+              not verified results from a single organization.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {caseStudies.map((study) => (
               <Link

@@ -48,11 +48,30 @@ export default function PromptsPage() {
     <>
       <PageHeader
         title="Prompt Library"
-        description="Ready-to-use prompts tested in real rehab workflows. Copy, customize, and use them with any AI assistant."
+        description="Copy-and-paste prompts built for rehab workflows. Each one has been tested in real clinic and leadership settings."
       />
 
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+          {/* PHI Warning */}
+          <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-10">
+            <h3 className="text-lg font-bold text-red-800 mb-2">
+              Do Not Enter Patient Information
+            </h3>
+            <p className="text-sm text-red-700 mb-2">
+              These prompts are designed for use with general-purpose AI tools
+              like ChatGPT, Claude, or Gemini. <strong>Do not paste
+              protected health information (PHI)</strong> into any of these
+              tools unless your organization has a signed BAA with the provider
+              and has approved the tool for that use.
+            </p>
+            <p className="text-sm text-red-700">
+              When a prompt says &quot;paste your text here,&quot; use
+              de-identified or example content. If you need to work with real
+              patient data, use only tools your compliance team has approved.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {prompts.map((prompt) => (
               <PromptCard key={prompt.title} prompt={prompt} />

@@ -1,17 +1,17 @@
 import PageHeader from "@/components/PageHeader";
 import Newsletter from "@/components/Newsletter";
-import { aiTools } from "@/data/tools";
+import { toolCategories } from "@/data/tools";
 
 export const metadata = {
   title: "AI Tools for Rehab — AI for Rehab",
   description:
-    "Reviews and observations on AI tools relevant to rehab settings.",
+    "A practical comparison of AI tool categories relevant to rehab settings — what they do, what they cost, and whether they're worth your time.",
 };
 
-const statusColors: Record<string, string> = {
-  Tested: "bg-green-100 text-green-800",
-  Watching: "bg-yellow-100 text-yellow-800",
-  "Not Yet Tested": "bg-slate-100 text-slate-600",
+const rehabFitColors: Record<string, string> = {
+  Strong: "bg-green-100 text-green-800",
+  Moderate: "bg-yellow-100 text-yellow-800",
+  Limited: "bg-slate-100 text-slate-600",
 };
 
 export default function ToolsPage() {
@@ -19,77 +19,82 @@ export default function ToolsPage() {
     <>
       <PageHeader
         title="AI Tools for Rehab"
-        description="Reviews and observations on AI tools relevant to rehab settings. Status reflects our direct experience — not endorsements."
+        description="A practical look at the AI tool categories that matter for rehab operations. No sponsored placements, no affiliate links — just an honest assessment of what's useful and what's not worth your time yet."
       />
 
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {aiTools.map((tool) => (
-              <div
-                key={tool.slug}
-                className="p-6 bg-white border border-slate-200 rounded-xl"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-800">
-                      {tool.name}
-                    </h3>
-                    <p className="text-sm text-slate-500">{tool.category}</p>
-                  </div>
-                  <span
-                    className={`px-2 py-1 text-xs font-medium rounded ${statusColors[tool.status]}`}
-                  >
-                    {tool.status}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-600 mb-4">
-                  <span className="font-medium">Best for:</span>{" "}
-                  {tool.bestFor}
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="text-sm font-medium text-green-700 mb-2">
-                      Pros
-                    </h4>
-                    <ul className="space-y-1">
-                      {tool.pros.map((pro) => (
-                        <li
-                          key={pro}
-                          className="text-sm text-slate-600 flex items-start gap-2"
-                        >
-                          <span className="text-green-500 mt-0.5">+</span>
-                          {pro}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-amber-700 mb-2">
-                      Cautions
-                    </h4>
-                    <ul className="space-y-1">
-                      {tool.cautions.map((c) => (
-                        <li
-                          key={c}
-                          className="text-sm text-slate-600 flex items-start gap-2"
-                        >
-                          <span className="text-amber-500 mt-0.5">!</span>
-                          {c}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 space-y-16">
+          {toolCategories.map((cat) => (
+            <div key={cat.category}>
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">
+                {cat.category}
+              </h2>
+              <p className="text-slate-600 mb-6">{cat.description}</p>
 
-          <div className="mt-12 p-6 bg-slate-50 border border-slate-200 rounded-xl text-center">
+              <div className="space-y-6">
+                {cat.tools.map((tool) => (
+                  <div
+                    key={tool.type}
+                    className="bg-white border border-slate-200 rounded-xl overflow-hidden"
+                  >
+                    <div className="p-6">
+                      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                        <h3 className="text-lg font-semibold text-slate-800">
+                          {tool.type}
+                        </h3>
+                        <span
+                          className={`px-3 py-1 text-xs font-semibold rounded-full ${rehabFitColors[tool.rehabFit]}`}
+                        >
+                          Rehab Fit: {tool.rehabFit}
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div className="bg-slate-50 rounded-lg p-3">
+                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                            Best For
+                          </p>
+                          <p className="text-sm text-slate-700">
+                            {tool.bestFor}
+                          </p>
+                        </div>
+                        <div className="bg-slate-50 rounded-lg p-3">
+                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                            PHI Safe?
+                          </p>
+                          <p className="text-sm text-slate-700">
+                            {tool.phiSafe}
+                          </p>
+                        </div>
+                        <div className="bg-slate-50 rounded-lg p-3">
+                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                            Cost Range
+                          </p>
+                          <p className="text-sm text-slate-700">
+                            {tool.costRange}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-slate-600">{tool.notes}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+            <h3 className="font-semibold text-slate-800 mb-2">
+              About these comparisons
+            </h3>
             <p className="text-sm text-slate-600">
-              Tool names are kept generic intentionally. AI for Rehab does not
-              accept paid placements or endorsements. Status reflects direct
-              experience only.
+              This page compares tool categories, not specific products. AI for
+              Rehab does not accept paid placements, sponsored reviews, or
+              affiliate commissions. Cost ranges are approximate and change
+              frequently. &quot;PHI Safe&quot; reflects general availability of
+              BAAs and HIPAA-compliant configurations — always verify with your
+              compliance team before using any tool with patient data.
             </p>
           </div>
         </div>

@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-slate-700 mt-8 pt-8 text-center text-sm text-slate-500">
-          &copy; 2025 AI for Rehab. All rights reserved. This site provides education, not legal, billing, compliance, or medical advice.
+          &copy; 2026 AI for Rehab. All rights reserved. This site provides education, not legal, billing, compliance, or medical advice.
         </div>
       </div>
     </footer>

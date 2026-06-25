@@ -1,66 +1,117 @@
-export interface AITool {
-  name: string;
-  slug: string;
+export interface AIToolCategory {
   category: string;
-  bestFor: string;
-  pros: string[];
-  cautions: string[];
-  status: "Tested" | "Watching" | "Not Yet Tested";
+  description: string;
+  tools: AIToolEntry[];
 }
 
-export const aiTools: AITool[] = [
+export interface AIToolEntry {
+  type: string;
+  bestFor: string;
+  phiSafe: string;
+  costRange: string;
+  rehabFit: "Strong" | "Moderate" | "Limited";
+  notes: string;
+}
+
+export const toolCategories: AIToolCategory[] = [
   {
-    name: "AI Scribe Platform A",
-    slug: "ai-scribe-a",
-    category: "AI Scribes",
-    bestFor: "Outpatient rehab documentation with structured note templates.",
-    pros: ["Integrates with common rehab EMRs", "Reduces after-hours charting time", "Supports PT/OT/SLP note formats"],
-    cautions: ["Requires HIPAA-compliant agreement", "Output must be reviewed before signing", "Learning curve for first-time users"],
-    status: "Tested"
+    category: "AI Scribes / Documentation Tools",
+    description: "Tools that listen to patient encounters and generate clinical notes. This is where most rehab companies start with AI.",
+    tools: [
+      {
+        type: "Ambient AI scribes (integrated with EMR)",
+        bestFor: "Clinicians who want to reduce after-hours charting by capturing visit notes during the encounter.",
+        phiSafe: "Typically yes — most offer BAAs. Verify with your compliance team before use.",
+        costRange: "$100-300/clinician/month",
+        rehabFit: "Strong",
+        notes: "Look for tools that support PT/OT/SLP-specific note structures, not just physician SOAP notes. Ask whether the tool can handle eval templates, daily notes, and discharge summaries — not just office visit notes."
+      },
+      {
+        type: "Standalone AI scribes (no EMR integration)",
+        bestFor: "Smaller clinics that want to test AI documentation without committing to a full platform.",
+        phiSafe: "Varies. Some do not offer BAAs. Do not use without verifying.",
+        costRange: "$50-150/clinician/month",
+        rehabFit: "Moderate",
+        notes: "These often require manual copy-paste into your EMR, which adds a step. Fine for a pilot, but not ideal long-term. Watch for tools that are really built for physicians and don't handle rehab documentation structures well."
+      },
+    ]
   },
   {
-    name: "General AI Assistant",
-    slug: "general-ai-assistant",
     category: "General AI Assistants",
-    bestFor: "Drafting emails, summarizing documents, brainstorming, and general writing tasks.",
-    pros: ["Versatile across many use cases", "Easy to get started", "No healthcare-specific setup needed"],
-    cautions: ["Do not enter PHI", "Not designed for clinical documentation", "Output quality varies — always review"],
-    status: "Tested"
+    description: "Broad-purpose AI tools for writing, brainstorming, summarizing, and drafting. Useful for leadership and admin work — not for clinical documentation with PHI.",
+    tools: [
+      {
+        type: "ChatGPT, Claude, Gemini (consumer versions)",
+        bestFor: "Drafting emails, meeting prep, brainstorming, creating templates, summarizing non-PHI documents.",
+        phiSafe: "No. Consumer versions do not offer BAAs. Do not enter PHI.",
+        costRange: "Free — $20/month",
+        rehabFit: "Strong",
+        notes: "These are the most versatile tools for leadership and admin work. Most of the prompts on this site are designed for these tools. The key rule: never enter patient information. Use them for operational and leadership tasks only."
+      },
+      {
+        type: "ChatGPT Enterprise, Claude for Business, Gemini for Workspace",
+        bestFor: "Organizations that want to use general AI tools with stronger data protections and team management.",
+        phiSafe: "BAAs available from some providers. Verify terms before assuming PHI is allowed.",
+        costRange: "$20-60/user/month",
+        rehabFit: "Moderate",
+        notes: "Having an enterprise plan does not automatically mean you can enter PHI. Read the BAA carefully. These are still general-purpose tools — they are not built for clinical documentation."
+      },
+    ]
   },
   {
-    name: "AI Meeting Notes Tool",
-    slug: "ai-meeting-notes",
     category: "Meeting Note Tools",
-    bestFor: "Recording and summarizing team meetings, leadership calls, and training sessions.",
-    pros: ["Automatic transcription", "Action item extraction", "Searchable meeting history"],
-    cautions: ["Check recording consent requirements", "May not capture clinical terminology accurately", "Review summaries for accuracy"],
-    status: "Tested"
+    description: "AI tools that record, transcribe, and summarize meetings. Useful for leadership meetings, team huddles, and training sessions.",
+    tools: [
+      {
+        type: "AI meeting assistants (Otter, Fireflies, etc.)",
+        bestFor: "Recording leadership meetings, extracting action items, creating searchable meeting history.",
+        phiSafe: "Generally not suitable for clinical discussions. Fine for operational meetings that don't involve patient details.",
+        costRange: "$10-30/user/month",
+        rehabFit: "Moderate",
+        notes: "Great for leadership and operations meetings. Do not use in clinical settings or during conversations that reference specific patients. Check your state's recording consent laws — some states require all-party consent."
+      },
+    ]
   },
   {
-    name: "AI Automation Platform",
-    slug: "ai-automation-platform",
-    category: "Automation Tools",
-    bestFor: "Connecting tools and automating repetitive administrative workflows.",
-    pros: ["Reduces manual data entry", "Connects scheduling, email, and reporting tools", "No coding required for basic automations"],
-    cautions: ["Requires careful setup to avoid errors", "Test thoroughly before going live", "Monitor automations regularly"],
-    status: "Watching"
+    category: "Marketing and Content Tools",
+    description: "AI tools for creating social media content, blog posts, and patient-facing marketing materials.",
+    tools: [
+      {
+        type: "AI writing assistants (for marketing)",
+        bestFor: "Drafting social posts, blog content, email campaigns, and physician outreach materials.",
+        phiSafe: "N/A — marketing content should never contain PHI.",
+        costRange: "Free — $50/month (many use general AI assistants for this)",
+        rehabFit: "Strong",
+        notes: "You don't necessarily need a separate marketing AI tool. ChatGPT or Claude with good prompts handles most clinic marketing tasks. The bigger challenge is having a content strategy, not a content tool."
+      },
+    ]
   },
   {
-    name: "AI Marketing Assistant",
-    slug: "ai-marketing-assistant",
-    category: "Marketing Tools",
-    bestFor: "Creating social media content, blog drafts, and marketing copy for clinics.",
-    pros: ["Fast content generation", "Consistent brand voice with templates", "Good for brainstorming ideas"],
-    cautions: ["Always review for accuracy", "Avoid health claims without evidence", "Customize output — generic content does not perform well"],
-    status: "Tested"
+    category: "Automation and Workflow Tools",
+    description: "Platforms that connect your existing tools and automate repetitive tasks — like sending follow-up emails or updating spreadsheets.",
+    tools: [
+      {
+        type: "No-code automation platforms (Zapier, Make, Power Automate)",
+        bestFor: "Automating admin workflows: referral tracking, appointment reminders, report distribution, data entry between systems.",
+        phiSafe: "Depends on the specific workflow. BAAs available from some platforms, but each connection in the automation chain must be HIPAA-compliant.",
+        costRange: "$20-100/month",
+        rehabFit: "Moderate",
+        notes: "Powerful but requires careful setup. Start with non-clinical workflows — like automatically sending a Slack message when a new referral hits your intake form. Test thoroughly before going live, and monitor regularly."
+      },
+    ]
   },
   {
-    name: "AI Reporting Dashboard",
-    slug: "ai-reporting-dashboard",
-    category: "Reporting and Dashboard Tools",
-    bestFor: "Visualizing clinic performance data and generating automated reports.",
-    pros: ["Centralizes data from multiple sources", "AI-generated insights and trend detection", "Customizable dashboards"],
-    cautions: ["Data accuracy depends on input quality", "May require technical setup", "Verify AI-generated insights independently"],
-    status: "Not Yet Tested"
+    category: "Reporting and Analytics",
+    description: "AI features within reporting tools that help visualize data and surface trends. Most rehab companies are not ready for standalone AI analytics — look for AI features in tools you already use.",
+    tools: [
+      {
+        type: "AI-enhanced dashboards and BI tools",
+        bestFor: "Visualizing clinic performance data, spotting trends across sites, generating automated summaries.",
+        phiSafe: "Depends on the platform. Many BI tools used in healthcare are already HIPAA-compliant, but verify.",
+        costRange: "$50-500/month depending on scale",
+        rehabFit: "Limited",
+        notes: "Most rehab companies will get more value from using a general AI assistant to analyze exported data than from buying a dedicated AI analytics platform. Export your metrics to a spreadsheet, paste them into ChatGPT, and ask questions. Start there before investing in specialized tools."
+      },
+    ]
   },
 ];
