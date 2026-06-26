@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import { roleUseCases } from "@/data/useCases";
 import { ChartIcon, TeamIcon, ClipboardIcon, PersonIcon, SpeechBubbleIcon, DollarIcon, GraduationIcon } from "@/components/ui/Icons";
 
@@ -63,9 +63,29 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* Featured Role Guides */}
+      {/* Practical Workflows */}
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+          <h2 className="text-2xl font-bold text-slate-800 mb-3">Practical Workflows</h2>
+          <p className="text-slate-600 mb-6">Problem-focused workflows with copy-and-paste prompts you can use today.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+            {[
+              { title: "Low Visits Diagnostic", href: "/workflows/low-visits-diagnostic", desc: "Diagnose whether low visits are caused by referrals, access, scheduling, cancellations, or ramp-up." },
+              { title: "AI Scribe Rollout Checklist", href: "/workflows/ai-scribe-rollout-checklist", desc: "Plan a documentation rollout around adoption, quality, and trust." },
+              { title: "Clinic Visit Follow-Up", href: "/workflows/clinic-visit-follow-up", desc: "Turn scattered visit notes into a structured action plan." },
+              { title: "New Clinician Ramp-Up", href: "/workflows/new-clinician-ramp-up", desc: "Create a 30-day ramp-up plan with weekly expectations." },
+              { title: "Front Desk Scripts", href: "/workflows/front-desk-scripts", desc: "Safe scripts for scheduling, cancellations, and referral follow-up." },
+            ].map((w) => (
+              <Link key={w.href} href={w.href} className="group p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-teal-300 hover:shadow-md transition-all">
+                <h3 className="font-semibold text-slate-800 mb-1 group-hover:text-teal-700 transition-colors text-sm">{w.title}</h3>
+                <p className="text-xs text-slate-600">{w.desc}</p>
+              </Link>
+            ))}
+            <Link href="/workflows" className="group p-5 bg-teal-50 border border-teal-200 rounded-xl hover:border-teal-400 hover:shadow-md transition-all flex items-center justify-center">
+              <span className="text-sm font-medium text-teal-700 group-hover:text-teal-800">View all workflows &rarr;</span>
+            </Link>
+          </div>
+
           <h2 className="text-2xl font-bold text-slate-800 mb-8">In-Depth Role Guides</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featuredRoles.map((role) => (
@@ -141,7 +161,7 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }

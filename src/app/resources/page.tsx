@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import Callout from "@/components/ui/Callout";
 import { resourceCategories } from "@/data/resources";
 import { articles } from "@/data/articles";
@@ -169,7 +169,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }

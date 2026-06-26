@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import Callout from "@/components/ui/Callout";
 import { useState } from "react";
 
@@ -397,7 +397,7 @@ Reminder: AI documentation must be reviewed by the treating clinician. Do not tr
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }

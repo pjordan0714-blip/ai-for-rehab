@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import { articles } from "@/data/articles";
 
 export function generateStaticParams() {
@@ -98,7 +98,7 @@ export default async function ArticlePage({
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }

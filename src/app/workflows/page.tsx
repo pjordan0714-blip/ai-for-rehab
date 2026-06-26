@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import { ChartIcon, LaptopIcon, TeamIcon, PersonIcon, GraduationIcon } from "@/components/ui/Icons";
 
 export const metadata = {
@@ -92,7 +92,7 @@ export default function WorkflowsPage() {
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }

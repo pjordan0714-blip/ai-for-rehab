@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import Callout from "@/components/ui/Callout";
 import WorkflowDiagram from "@/components/ui/WorkflowDiagram";
 import { useState } from "react";
@@ -374,7 +374,7 @@ Keep it practical and not overwhelming.`} />
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }

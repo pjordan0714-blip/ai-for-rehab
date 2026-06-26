@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import PromptComparison from "@/components/ui/PromptComparison";
 import PromptExampleCard from "@/components/ui/PromptExampleCard";
 import WorkflowDiagram from "@/components/ui/WorkflowDiagram";
@@ -259,21 +259,25 @@ export default function Home() {
             Each workflow starts with a real rehab operations problem and gives
             you a prompt, checklist, or decision framework you can use today.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          <div className="space-y-4 mb-6">
             {[
-              { title: "Low visits are not always a referral problem", href: "/workflows/low-visits-diagnostic" },
-              { title: "AI scribe rollout checklist", href: "/workflows/ai-scribe-rollout-checklist" },
-              { title: "Turn a clinic visit into a follow-up plan", href: "/workflows/clinic-visit-follow-up" },
-              { title: "New clinician ramp-up plan", href: "/workflows/new-clinician-ramp-up" },
-              { title: "Front desk scripts — zero PHI required", href: "/workflows/front-desk-scripts" },
+              { title: "Low Visits Are Not Always a Referral Problem", description: "Use clinic-level metrics to figure out whether the real issue is referral volume, eval access, scheduling, cancellations, visits per FTE, staffing, or new clinician ramp-up.", bestFor: "Clinic directors, regional directors, operations leaders", href: "/workflows/low-visits-diagnostic", button: "Diagnose low visits" },
+              { title: "AI Scribe Rollouts Fail When They Are Treated Like Software Installs", description: "Plan an AI documentation rollout around adoption, workflow, note quality, clinician trust, compliance, and leadership follow-up.", bestFor: "Operations leaders, clinic directors, documentation leaders, AI champions", href: "/workflows/ai-scribe-rollout-checklist", button: "View rollout checklist" },
+              { title: "Turn a Clinic Visit Into a Follow-Up Plan", description: "Turn scattered clinic visit notes into priorities, commitments, owners, follow-up emails, and a next-visit checklist.", bestFor: "Regional directors, area managers, operations leaders", href: "/workflows/clinic-visit-follow-up", button: "Build follow-up plan" },
+              { title: "New Clinician Ramp-Up Should Not Be Guesswork", description: "Create a structured ramp-up plan around schedule build, documentation habits, eval flow, mentorship, communication, and confidence.", bestFor: "Clinic directors, mentors, regional leaders", href: "/workflows/new-clinician-ramp-up", button: "Create ramp-up plan" },
+              { title: "Front Desk AI Scripts That Do Not Require Patient Data", description: "Create safe scripts for scheduling, cancellations, no-shows, referral follow-up, and patient reactivation without using PHI.", bestFor: "Front office teams, clinic directors, admin leaders", href: "/workflows/front-desk-scripts", button: "Create scripts" },
             ].map((w) => (
-              <Link key={w.href} href={w.href} className="p-4 bg-slate-50 border border-slate-200 rounded-lg hover:border-teal-300 hover:shadow-sm transition-all text-sm font-medium text-slate-800 hover:text-teal-700">
-                {w.title} <span className="text-teal-600">&rarr;</span>
+              <Link key={w.href} href={w.href} className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-300 hover:shadow-md transition-all">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-800 mb-1 group-hover:text-teal-700 transition-colors">{w.title}</h3>
+                  <p className="text-sm text-slate-600 mb-2">{w.description}</p>
+                  <p className="text-xs text-slate-400">Best for: {w.bestFor}</p>
+                </div>
+                <span className="shrink-0 px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-lg group-hover:bg-teal-700 transition-colors text-center">
+                  {w.button}
+                </span>
               </Link>
             ))}
-            <Link href="/workflows" className="p-4 bg-teal-50 border border-teal-200 rounded-lg hover:border-teal-400 hover:shadow-sm transition-all text-sm font-medium text-teal-700 hover:text-teal-800">
-              View all workflows &rarr;
-            </Link>
           </div>
         </div>
       </section>
@@ -333,8 +337,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <Newsletter />
+      {/* Starter Pack CTA */}
+      <StarterPackCTA />
 
       {/* About Founder */}
       <section className="bg-white">

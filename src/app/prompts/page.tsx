@@ -1,7 +1,7 @@
 'use client';
 
 import PageHeader from "@/components/PageHeader";
-import Newsletter from "@/components/Newsletter";
+import StarterPackCTA from "@/components/StarterPackCTA";
 import { prompts } from "@/data/prompts";
 import type { Prompt } from "@/data/prompts";
 import { useState } from "react";
@@ -124,7 +124,7 @@ export default function PromptsPage() {
         </div>
       </section>
 
-      <Newsletter />
+      <StarterPackCTA />
     </>
   );
 }
