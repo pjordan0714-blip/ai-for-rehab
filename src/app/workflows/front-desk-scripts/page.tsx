@@ -114,7 +114,7 @@ Create:
           </div>
 
           <Callout type="best-use">
-            Front desk scripts are one of the best low-risk AI use cases in rehab. No PHI required. No compliance risk. Just better, more consistent communication that helps patients get scheduled and stay on their plan of care.
+            Front desk scripts are one of the best low-risk AI use cases in rehab. No PHI required when used correctly. Lower-risk than patient-specific workflows, but staff still need clear boundaries. The result is better, more consistent communication that helps patients get scheduled and stay on their plan of care.
           </Callout>
 
           <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">

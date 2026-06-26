@@ -56,7 +56,7 @@ export default function StarterPackCTA() {
               </button>
             </form>
             <p className="text-xs text-slate-400 mt-4">
-              Not connected yet — join the list and we will send it when it is ready. No spam.
+              Join the list and I&apos;ll send the starter pack when it&apos;s ready. No spam.
             </p>
           </div>
         </div>

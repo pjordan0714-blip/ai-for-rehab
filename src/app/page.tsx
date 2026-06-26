@@ -56,10 +56,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/resources"
+                href="/workflows"
                 className="px-7 py-3.5 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition-colors text-center"
               >
-                Explore the Resource Library
+                Start with a Workflow
               </Link>
               <Link
                 href="/prompts"
@@ -68,6 +68,39 @@ export default function Home() {
                 Browse the Prompt Library
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Start with the Problem — moved high for LinkedIn traffic */}
+      <section className="bg-slate-50 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+          <h2 className="text-2xl font-bold text-slate-800 mb-3">
+            Start with the Problem You Are Trying to Solve
+          </h2>
+          <p className="text-slate-600 mb-8 max-w-2xl">
+            Each workflow starts with a real rehab operations problem and gives
+            you a prompt, checklist, or decision framework you can use today.
+          </p>
+          <div className="space-y-4">
+            {[
+              { title: "Low Visits Are Not Always a Referral Problem", description: "Use clinic-level metrics to figure out whether the real issue is referral volume, eval access, scheduling, cancellations, visits per FTE, staffing, or new clinician ramp-up.", bestFor: "Clinic directors, regional directors, operations leaders", href: "/workflows/low-visits-diagnostic", button: "Diagnose low visits" },
+              { title: "AI Scribe Rollouts Fail When They Are Treated Like Software Installs", description: "Plan an AI documentation rollout around adoption, workflow, note quality, clinician trust, compliance, and leadership follow-up.", bestFor: "Operations leaders, clinic directors, documentation leaders, AI champions", href: "/workflows/ai-scribe-rollout-checklist", button: "View rollout checklist" },
+              { title: "Turn a Clinic Visit Into a Follow-Up Plan", description: "Turn scattered clinic visit notes into priorities, commitments, owners, follow-up emails, and a next-visit checklist.", bestFor: "Regional directors, area managers, operations leaders", href: "/workflows/clinic-visit-follow-up", button: "Build follow-up plan" },
+              { title: "New Clinician Ramp-Up Should Not Be Guesswork", description: "Create a structured ramp-up plan around schedule build, documentation habits, eval flow, mentorship, communication, and confidence.", bestFor: "Clinic directors, mentors, regional leaders", href: "/workflows/new-clinician-ramp-up", button: "Create ramp-up plan" },
+              { title: "Front Desk AI Scripts That Do Not Require Patient Data", description: "Create safe scripts for scheduling, cancellations, no-shows, referral follow-up, and patient reactivation without using PHI.", bestFor: "Front office teams, clinic directors, admin leaders", href: "/workflows/front-desk-scripts", button: "Create scripts" },
+            ].map((w) => (
+              <Link key={w.href} href={w.href} className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-300 hover:shadow-md transition-all">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-800 mb-1 group-hover:text-teal-700 transition-colors">{w.title}</h3>
+                  <p className="text-sm text-slate-600 mb-2">{w.description}</p>
+                  <p className="text-xs text-slate-400">Best for: {w.bestFor}</p>
+                </div>
+                <span className="shrink-0 px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-lg group-hover:bg-teal-700 transition-colors text-center">
+                  {w.button}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -245,39 +278,6 @@ export default function Home() {
               Do not ask AI to diagnose without your exam findings. Do not copy
               outputs directly into notes without reviewing and editing them.
             </Callout>
-          </div>
-        </div>
-      </section>
-
-      {/* Start with the Problem */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-          <h2 className="text-2xl font-bold text-slate-800 mb-3">
-            Start with the Problem You Are Trying to Solve
-          </h2>
-          <p className="text-slate-600 mb-8 max-w-2xl">
-            Each workflow starts with a real rehab operations problem and gives
-            you a prompt, checklist, or decision framework you can use today.
-          </p>
-          <div className="space-y-4 mb-6">
-            {[
-              { title: "Low Visits Are Not Always a Referral Problem", description: "Use clinic-level metrics to figure out whether the real issue is referral volume, eval access, scheduling, cancellations, visits per FTE, staffing, or new clinician ramp-up.", bestFor: "Clinic directors, regional directors, operations leaders", href: "/workflows/low-visits-diagnostic", button: "Diagnose low visits" },
-              { title: "AI Scribe Rollouts Fail When They Are Treated Like Software Installs", description: "Plan an AI documentation rollout around adoption, workflow, note quality, clinician trust, compliance, and leadership follow-up.", bestFor: "Operations leaders, clinic directors, documentation leaders, AI champions", href: "/workflows/ai-scribe-rollout-checklist", button: "View rollout checklist" },
-              { title: "Turn a Clinic Visit Into a Follow-Up Plan", description: "Turn scattered clinic visit notes into priorities, commitments, owners, follow-up emails, and a next-visit checklist.", bestFor: "Regional directors, area managers, operations leaders", href: "/workflows/clinic-visit-follow-up", button: "Build follow-up plan" },
-              { title: "New Clinician Ramp-Up Should Not Be Guesswork", description: "Create a structured ramp-up plan around schedule build, documentation habits, eval flow, mentorship, communication, and confidence.", bestFor: "Clinic directors, mentors, regional leaders", href: "/workflows/new-clinician-ramp-up", button: "Create ramp-up plan" },
-              { title: "Front Desk AI Scripts That Do Not Require Patient Data", description: "Create safe scripts for scheduling, cancellations, no-shows, referral follow-up, and patient reactivation without using PHI.", bestFor: "Front office teams, clinic directors, admin leaders", href: "/workflows/front-desk-scripts", button: "Create scripts" },
-            ].map((w) => (
-              <Link key={w.href} href={w.href} className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-300 hover:shadow-md transition-all">
-                <div className="flex-1">
-                  <h3 className="font-semibold text-slate-800 mb-1 group-hover:text-teal-700 transition-colors">{w.title}</h3>
-                  <p className="text-sm text-slate-600 mb-2">{w.description}</p>
-                  <p className="text-xs text-slate-400">Best for: {w.bestFor}</p>
-                </div>
-                <span className="shrink-0 px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-lg group-hover:bg-teal-700 transition-colors text-center">
-                  {w.button}
-                </span>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
