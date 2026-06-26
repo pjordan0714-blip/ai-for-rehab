@@ -249,8 +249,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Guides */}
+      {/* Start with the Problem */}
       <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+          <h2 className="text-2xl font-bold text-slate-800 mb-3">
+            Start with the Problem You Are Trying to Solve
+          </h2>
+          <p className="text-slate-600 mb-8 max-w-2xl">
+            Each workflow starts with a real rehab operations problem and gives
+            you a prompt, checklist, or decision framework you can use today.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {[
+              { title: "Low visits are not always a referral problem", href: "/workflows/low-visits-diagnostic" },
+              { title: "AI scribe rollout checklist", href: "/workflows/ai-scribe-rollout-checklist" },
+              { title: "Turn a clinic visit into a follow-up plan", href: "/workflows/clinic-visit-follow-up" },
+              { title: "New clinician ramp-up plan", href: "/workflows/new-clinician-ramp-up" },
+              { title: "Front desk scripts — zero PHI required", href: "/workflows/front-desk-scripts" },
+            ].map((w) => (
+              <Link key={w.href} href={w.href} className="p-4 bg-slate-50 border border-slate-200 rounded-lg hover:border-teal-300 hover:shadow-sm transition-all text-sm font-medium text-slate-800 hover:text-teal-700">
+                {w.title} <span className="text-teal-600">&rarr;</span>
+              </Link>
+            ))}
+            <Link href="/workflows" className="p-4 bg-teal-50 border border-teal-200 rounded-lg hover:border-teal-400 hover:shadow-sm transition-all text-sm font-medium text-teal-700 hover:text-teal-800">
+              View all workflows &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Guides */}
+      <section className="bg-slate-50 border-y border-slate-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
           <h2 className="text-2xl font-bold text-slate-800 mb-3">
             Start with These Guides
